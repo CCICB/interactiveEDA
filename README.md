@@ -36,6 +36,20 @@ run_app()
 ggEDA will open in your default browser.
 
 
+## For Developers
+
+### Creating a web-assembly app
+
+ggEDA is developed as a golem app, which by default cannot  be compiled to webassembly
+because it lacks the required "app.R" file. We have added this file to the package root directory so
+web-assembly compilation can be accomplished using `shinylive::export(".", "_site")`.
+
+To auto-compile and deploy the web-assembly app version: use the deploy-app.yaml.
+
+
+If this doesn't work, we can try the following [shiny-live github action](https://github.com/ThinkR-open/golem-shinylive/blob/main/.github/workflows/shiny-live.yml)
+
+
 ## Code of Conduct
 
 Please note that the ggEDA project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.

@@ -10,3 +10,6 @@ $run_dev.*
 ^CODE_OF_CONDUCT\.md$
 ^\.github$
 ^logo$
+^webr$
+^_site$
+^app\.R$

@@ -13,7 +13,7 @@ Imports:
     cli,
     colourpicker,
     config,
-    gg1d,
+    gg1d (>= 0.1.0.9000),
     ggiraph,
     golem,
     palmerpenguins,
