@@ -1,9 +1,9 @@
 
-# ggEDA <img src="man/figures/logo.png" align="right" height="138" alt="" />
+# featurepeeker <img src="man/figures/logo.png" align="right" height="138" alt="" />
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![R-CMD-check](https://github.com/CCICB/ggEDA/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CCICB/ggEDA/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/CCICB/featurepeeker/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CCICB/featurepeeker/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 A browser-based graphical user interface for interactive exploratory data analysis, 
@@ -14,33 +14,33 @@ and tiled one-dimensional graphics — all without writing a single line of code
 
 ## Quick Start
 
-Start using the web-app hosted [here](https://CCICB.github.io/ggEDA)
+Start using the web-app hosted [here](https://CCICB.github.io/featurepeeker)
 
 
-### Running ggEDA offline:
+### Running featurepeeker offline:
 
-You can install ggEDA as an R package from [GitHub](https://github.com/) with:
+You can install featurepeeker as an R package from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("pak")
-pak::pak("CCICB/ggEDA")
+pak::pak("CCICB/featurepeeker")
 ```
 
 Once installed, run the app locally:
 
 ``` r
-library(ggEDA)
+library(featurepeeker)
 run_app()
 ```
 
-ggEDA will open in your default browser.
+featurepeeker will open in your default browser.
 
 
 ## For Developers
 
 ### Creating a web-assembly app
 
-ggEDA is developed as a golem app, which by default cannot  be compiled to webassembly
+featurepeeker is developed as a golem app, which by default cannot  be compiled to webassembly
 because it lacks the required "app.R" file. We have added this file to the package root directory so
 web-assembly compilation can be accomplished using `shinylive::export(".", "_site")`.
 
@@ -52,4 +52,4 @@ If this doesn't work, we can try the following [shiny-live github action](https:
 
 ## Code of Conduct
 
-Please note that the ggEDA project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
+Please note that the featurepeeker project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.

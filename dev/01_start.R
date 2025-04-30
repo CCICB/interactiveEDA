@@ -19,7 +19,7 @@
 ## to change the name in the app_sys() function in app_config.R /!\
 ##
 golem::fill_desc(
-  pkg_name = "ggEDA",
+  pkg_name = "featurepeeker",
   pkg_title = "Web App for Exploratory Data Analysis", # What the Package Does (One Line, Title Case, No Period)
   pkg_description = "A browser-based graphical user interface for interactive exploratory data analysis powered by the 'gg1d' package.
   Enables non-programmers to explore complex multi-feature relationships, visualise missingness patterns, and generate publication-ready
@@ -30,7 +30,7 @@ golem::fill_desc(
     email = "selkamand@ccia.org.au", # Your email
     role = c("aut", "cre") # Your role (here author/creator)
   ),
-  repo_url = "https://github.com/CCICB/ggEDA", # The URL of the GitHub repo (optional),
+  repo_url = "https://github.com/CCICB/featurepeeker", # The URL of the GitHub repo (optional),
   pkg_version = "0.0.0.9000", # The version of the package containing the app
   set_options = TRUE # Set the global golem options
 )
@@ -67,7 +67,7 @@ usethis::use_git()
 ## Sets the remote associated with 'name' to 'url'
 usethis::use_git_remote(
   name = "origin",
-  url = "https://github.com/CCICB/ggEDA.git"
+  url = "https://github.com/CCICB/featurepeeker.git"
 )
 
 # You're now set! ----
