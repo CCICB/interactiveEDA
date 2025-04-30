@@ -44,9 +44,9 @@ app_server <- function(input, output, session,  df, colname, palette) {
   # Demo Dataset Selection
   observeEvent(input$in_link_iris, dataset(datasets::iris))
   observeEvent(input$in_link_penguins, dataset(palmerpenguins::penguins[1:6]))
-  observeEvent(input$in_link_minibeans, dataset(gg1d::minibeans))
+  observeEvent(input$in_link_minibeans, dataset(ggEDA::minibeans))
   observeEvent(input$in_link_chickweights, dataset(datasets::chickwts))
-  observeEvent(input$in_link_lazy_birdwatcher, dataset(gg1d::lazy_birdwatcher))
+  observeEvent(input$in_link_lazy_birdwatcher, dataset(ggEDA::lazy_birdwatcher))
 
   observeEvent(input$in_sel_pcp_col_colour, {
     validate(need(!is.null(input$in_sel_pcp_col_colour) && nchar(input$in_sel_pcp_col_colour) > 0 , message = "Requires selection of Column to Colour by"))
@@ -102,7 +102,7 @@ app_server <- function(input, output, session,  df, colname, palette) {
     tryCatch(
       expr = {
         interactive_visualisation <- if(input$in_radio_plot_type == "gg1d"){
-          gg1d::gg1d(
+          ggEDA::ggstack(
             data = data,
             col_id = validate_column(input$in_sel_id, dataset()),
             col_sort = validate_column(input$in_sel_sort_col, dataset()),
@@ -119,7 +119,7 @@ app_server <- function(input, output, session,  df, colname, palette) {
             tooltip_column_suffix = "_tooltip",
             ignore_column_regex = if (nchar(input$in_ignore_regex) > 0) input$in_ignore_regex else NULL,
             convert_binary_numeric_to_factor = input$in_convert_binary_numeric,
-            options = gg1d::gg1d_options(
+            options = ggEDA::ggstack_options(
               show_legend = input$in_show_legend,
               show_legend_titles = input$in_show_legend_titles,
               legend_position = input$in_legend_position,
@@ -150,13 +150,15 @@ app_server <- function(input, output, session,  df, colname, palette) {
           )
         }
         else {
+          message("Highlight col selected: [", input$in_sel_pcp_highlight, "]")
+          message("Highlight val after validate_column: [", validate_column(input$in_sel_pcp_highlight, dataset()), "]")
 
-          gg1d::ggparallel(
+          ggEDA::ggparallel(
             data = data,
             order_columns_by = input$in_sel_pcp_order_columns,
             order_observations_by = input$in_sel_pcp_order_observations_by,
             col_colour = validate_column(input$in_sel_pcp_col_colour, dataset()),
-            highlight = validate_column(input$in_sel_pcp_highlight, dataset()),
+            highlight = validate_level(input$in_sel_pcp_col_colour, input$in_sel_pcp_highlight, dataset()),
             scaling = input$in_sel_pcp_scaling,
             convert_binary_numeric_to_factor = TRUE,
             palette_colour = colour_palette_pcp(),
@@ -164,7 +166,7 @@ app_server <- function(input, output, session,  df, colname, palette) {
               input$in_colour_pcp_highlight,
               input$in_colour_pcp_highlight_other
             ),
-            options = gg1d::ggparallel_options(
+            options = ggEDA::ggparallel_options(
               interactive_svg_width = input$in_pcp_svg_width %|?|% 8,
               interactive_svg_height =  input$in_pcp_svg_height %|?|% 6,
               show_legend = input$in_check_pcp_show_legend,
@@ -194,38 +196,8 @@ app_server <- function(input, output, session,  df, colname, palette) {
         shinyWidgets::sendSweetAlert(session = session, title = "Failed to Generate Plot", text =  err2html(err))
         validate("Failed to Generate Plot")
       }
-      # warning = function(warn){
-      #   shinyWidgets::sendSweetAlert(session = session, title = "Warning when Generating Plot", text =  err2html(warn))
-      #   validate("Failed to Generate GG1D plot")
-      # }
     )
   })
-
-  # Render UI palettes
-  # output$out_ui_palettes <- renderUI({
-  #   data <- req(dataset())
-  #   col_is_categorical <- vapply(data, function(x) { is.character(x) || is.factor(x) }, logical(1))
-  #   categorical_col_names <- colnames(data)[col_is_categorical]
-  #
-  #   pickers_list <- lapply(categorical_col_names, function(colname) {
-  #     categorical_col_values <- unique(data[[colname]])
-  #     card(min_height = "300px",
-  #       card_header(colname),
-  #       div(
-  #         style = "display:flex; flex-wrap: wrap; gap: 10px;",
-  #         lapply(categorical_col_values, function(level) {
-  #           colourpicker::colourInput(
-  #             inputId = paste0("palette_", colname, "_", level),
-  #             label = level,
-  #             value = "#000000"
-  #           )
-  #         })
-  #       )
-  #     )
-  #   })
-  #
-  #   do.call(tagList, pickers_list)
-  # })
 
 
 }

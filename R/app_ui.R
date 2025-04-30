@@ -10,7 +10,7 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     # Your application UI logic
     bslib::page_sidebar(
-      title = "EDA",
+      title = "featurepeeker",
       theme = bslib::bs_theme(bootswatch = "bootstrap"),
 
 
