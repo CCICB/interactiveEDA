@@ -5,7 +5,7 @@ dev_history.R
 ^dev$
 $run_dev.*
 ^.here$
-^featurepeeker\.Rproj$
+^interactiveEDA\.Rproj$
 ^LICENSE\.md$
 ^CODE_OF_CONDUCT\.md$
 ^\.github$

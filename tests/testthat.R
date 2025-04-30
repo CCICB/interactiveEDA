@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(featurepeeker)
+library(interactiveEDA)
 
-test_check("featurepeeker")
+test_check("interactiveEDA")

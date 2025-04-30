@@ -1,7 +1,7 @@
-# Launch the ShinyApp (Do not remove this comment)
-# To deploy, run: rsconnect::deployApp()
-# Or use the blue button on top of this file
-
+message("Loading pacakge with pkgload::load_all ")
 pkgload::load_all(export_all = FALSE,helpers = FALSE,attach_testthat = FALSE)
+message("Updating options")
 options("golem.app.prod" = TRUE)
-featurepeeker::run_app()
+message("About to run app")
+run_app()
+

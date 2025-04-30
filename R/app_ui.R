@@ -10,9 +10,8 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     # Your application UI logic
     bslib::page_sidebar(
-      title = "featurepeeker",
+      title = "interactiveEDA",
       theme = bslib::bs_theme(bootswatch = "bootstrap"),
-
 
       # SideBar -----------------------------------------------------------------
       sidebar = bslib::sidebar(
@@ -253,7 +252,7 @@ golem_add_external_resources <- function() {
     favicon(),
     bundle_resources(
       path = app_sys("app/www"),
-      app_title = "featurepeeker"
+      app_title = "interactiveEDA"
     )
     # Add here other external resources
     # for example, you can add shinyalert::useShinyalert()

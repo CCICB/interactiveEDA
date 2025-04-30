@@ -5,7 +5,7 @@
 #' @import shiny
 #' @noRd
 app_server <- function(input, output, session,  df, colname, palette) {
-
+  message("running server:")
   # By default we start with IRIS dataset
   dataset <- reactiveVal(value = datasets::iris)
 

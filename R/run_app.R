@@ -14,6 +14,7 @@ run_app <- function(
   uiPattern = "/",
   ...
 ) {
+  message("Got to run_app")
   with_golem_options(
     app = shinyApp(
       ui = app_ui,
