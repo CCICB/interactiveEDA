@@ -1,5 +1,5 @@
 
-# ggEDA <img src="man/figures/logo.png" align="right" height="120" alt="" />
+# ggEDA <img src="man/figures/logo.png" align="right" height="138" alt="" />
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
@@ -16,7 +16,8 @@ and tiled one-dimensional graphics — all without writing a single line of code
 
 Start using the web-app hosted [here](https://CCICB.github.io/ggEDA)
 
-## Running ggEDA offline:
+
+### Running ggEDA offline:
 
 You can install ggEDA as an R package from [GitHub](https://github.com/) with:
 
@@ -32,7 +33,7 @@ library(ggEDA)
 run_app()
 ```
 
-This will open up EDA in your default browser.
+ggEDA will open in your default browser.
 
 
 ## Code of Conduct
