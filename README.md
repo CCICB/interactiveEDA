@@ -7,7 +7,7 @@
 <!-- badges: end -->
 
 A browser-based graphical user interface for interactive exploratory data analysis, 
-powered by the 'gg1d' package. 
+powered by the '[ggEDA](https://github.com/CCICB/ggEDA)' package. 
 Designed for non-programmers, it allows users to explore complex multi-variable relationships, 
 visualize patterns of missing data, and create publication-ready parallel coordinate plots 
 and tiled one-dimensional graphics — all without writing a single line of code.
