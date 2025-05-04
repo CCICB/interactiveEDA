@@ -4,6 +4,10 @@
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/CCICB/interactiveEDA/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CCICB/interactiveEDA/actions/workflows/R-CMD-check.yaml)
+![GitHub Issues or Pull Requests](https://img.shields.io/github/issues-closed/CCICB/interactiveEDA)
+[![code size](https://img.shields.io/github/languages/code-size/CCICB/interactiveEDA.svg)](https://github.com/selkamand/interactiveEDA)
+![GitHub last commit](https://img.shields.io/github/last-commit/CCICB/interactiveEDA)
+[![r-universe status badge](https://CCICB.r-universe.dev/badges/interactiveEDA)](https://CCICB.r-universe.dev/interactiveEDA)
 <!-- badges: end -->
 
 A browser-based graphical user interface for interactive exploratory data analysis, 
