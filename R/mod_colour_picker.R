@@ -28,6 +28,7 @@ mod_colour_picker_ui <- function(id) {
 #'
 #' @returns a named vector where names are all unique values of column \code{colname} in dataset \code{df} and values are colours based on pickerInput selections.
 #'
+#' @noRd
 mod_colour_picker_server <- function(id, df, colname, palette){
   assertions::assert_reactive(colname)
   assertions::assert_reactive(df)

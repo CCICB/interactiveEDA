@@ -51,7 +51,6 @@ if_not_numeric_return_default <- function(x, default){
 #'
 #' @keywords internal
 #' @noRd
-#' @export
 validate_column <- function(colname, dataset){
   if (is.null(colname)) {
     return(NULL)
