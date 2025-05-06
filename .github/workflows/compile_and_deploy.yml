@@ -1,0 +1,63 @@
+name: Deploy app (custom setup.R)
+
+on:
+  push:
+    branches:
+      - webassembly
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      SITE_TITLE: "EDA" # Set desired title here
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Install R (automatically handled by setup-r-package)
+      - uses: rstudio/shiny-workflows/setup-r-package@v1
+        with:
+          packages: |
+            posit-dev/r-shinylive
+            sessioninfo
+          cache-version: ${{ github.event.inputs.cache-version }}
+
+      # Setup Linux Dependencies
+      - name: Run ./setup.sh to install Linux dependencies
+        run: ./setup.sh
+
+      - name: Run setup.R to install dependencies
+        shell: Rscript {0}
+        run: |
+          source("setup.R")
+
+      - name: Build site
+        shell: Rscript {0}
+        run: |
+          shinylive::export(".", "site", title = Sys.getenv("SITE_TITLE"))
+
+      - name: Upload site artifact
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "site"
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
