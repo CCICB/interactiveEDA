@@ -25,7 +25,7 @@ jobs:
           cache-version: ${{ github.event.inputs.cache-version }}
 
       # Setup Linux Dependencies
-      - name: Run shell script to install Linux dependencies
+      - name: Run ./setup.sh to install Linux dependencies
         run: ./setup.sh
 
       - name: Run setup.R to install dependencies
