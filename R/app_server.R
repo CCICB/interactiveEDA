@@ -145,7 +145,9 @@ app_server <- function(input, output, session,  df, colname, palette) {
               colours_default_logical = c(
                 "TRUE" = input$in_default_logical_colour_true,
                 "FALSE" = input$in_default_logical_colour_false
-              )
+              ),
+              fontsize_barplot_y_numbers = input$in_num_pcp_fontsize_barplot_y_numbers,
+              fontsize_y_title =  input$in_num_pcp_fontsize_y_title
             )
           )
         }

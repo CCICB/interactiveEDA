@@ -136,8 +136,13 @@ app_ui <- function(request) {
                 selectizeInput("in_sel_plotting_cols", label = "Plot Columns", choices = NULL, multiple = TRUE, selected = NULL, options = list(dropdownParent = "body")),
                 checkboxInput("in_limit_plots", label = "Limit Plot Columns", value = TRUE),
                 textInput("in_ignore_regex", "Ignore Column Regex", value = "_ignore$")
+              ),
+              bslib::card(
+                bslib::card_header("Y Axis Text"),
+                numericInput("in_num_pcp_fontsize_y_title", "Y axis fontsize", value = 12, step = 2, min = 1, max = 100),
+                numericInput("in_num_pcp_fontsize_barplot_y_numbers", "Y Axis Number Fontsize", value = 8, step = 2, min = 1, max = 100),
               )
-            )
+            ),
           ),
           # Options For PCP plots
 
