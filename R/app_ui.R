@@ -39,13 +39,13 @@ app_ui <- function(request) {
         ),
         hr(),
 
-        ## gg1d Parameters
+        ## ggstack Parameters
         bslib::card(
           bslib::card_header("Choose a graph type", ),
           shinyWidgets::radioGroupButtons(
             inputId = "in_radio_plot_type",
             label = NULL,
-            choices = c("GG1D" = "gg1d", "Parallel Coordinate Plot" = "pcp"),
+            choices = c("Stacked" = "ggstack", "Parallel Coordinate Plot" = "pcp"),
             justified = TRUE, width = "100%", status = "primary"
           )
         ),
@@ -53,10 +53,10 @@ app_ui <- function(request) {
           id = "navset_visoptions",
 
 
-          ## GG1D --------------------------------------------------------------------
+          ## GGSTACK --------------------------------------------------------------------
           bslib::nav_panel(
-            value = "gg1d",
-            title = "gg1d",
+            value = "ggstack",
+            title = "ggstack",
             bslib::layout_column_wrap(
               heights_equal = "row", width = 1 / 3, height = "900px",
               bslib::card(
@@ -218,10 +218,10 @@ app_ui <- function(request) {
 
 
       # Main UI ------------------------------------------------------
-      ## gg1d plot
+      ## ggstack plot
       bslib::card(
         min_height = "500px",
-        bslib::card_header("Visualisation (gg1d)"),
+        bslib::card_header("Visualisation (ggstack)"),
         bslib::card_body(
           shinycssloaders::withSpinner(
             ggiraph::girafeOutput("out_plot_widget", width = "95%")
