@@ -45,7 +45,7 @@ app_ui <- function(request) {
           shinyWidgets::radioGroupButtons(
             inputId = "in_radio_plot_type",
             label = NULL,
-            choices = c("Stacked" = "ggstack", "Parallel Coordinate Plot" = "pcp"),
+            choices = c("Stacked Plots" = "ggstack", "Parallel Coordinate Plot" = "pcp"),
             justified = TRUE, width = "100%", status = "primary"
           )
         ),
