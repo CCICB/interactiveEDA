@@ -39,13 +39,13 @@ app_ui <- function(request) {
         ),
         hr(),
 
-        ## gg1d Parameters
+        ## ggstack Parameters
         bslib::card(
           bslib::card_header("Choose a graph type", ),
           shinyWidgets::radioGroupButtons(
             inputId = "in_radio_plot_type",
             label = NULL,
-            choices = c("GG1D" = "gg1d", "Parallel Coordinate Plot" = "pcp"),
+            choices = c("Stacked Plots" = "ggstack", "Parallel Coordinate Plot" = "pcp"),
             justified = TRUE, width = "100%", status = "primary"
           )
         ),
@@ -53,10 +53,10 @@ app_ui <- function(request) {
           id = "navset_visoptions",
 
 
-          ## GG1D --------------------------------------------------------------------
+          ## GGSTACK --------------------------------------------------------------------
           bslib::nav_panel(
-            value = "gg1d",
-            title = "gg1d",
+            value = "ggstack",
+            title = "ggstack",
             bslib::layout_column_wrap(
               heights_equal = "row", width = 1 / 3, height = "900px",
               bslib::card(
@@ -136,8 +136,13 @@ app_ui <- function(request) {
                 selectizeInput("in_sel_plotting_cols", label = "Plot Columns", choices = NULL, multiple = TRUE, selected = NULL, options = list(dropdownParent = "body")),
                 checkboxInput("in_limit_plots", label = "Limit Plot Columns", value = TRUE),
                 textInput("in_ignore_regex", "Ignore Column Regex", value = "_ignore$")
+              ),
+              bslib::card(
+                bslib::card_header("Y Axis Text"),
+                numericInput("in_num_pcp_fontsize_y_title", "Y axis fontsize", value = 12, step = 2, min = 1, max = 100),
+                numericInput("in_num_pcp_fontsize_barplot_y_numbers", "Y Axis Number Fontsize", value = 8, step = 2, min = 1, max = 100),
               )
-            )
+            ),
           ),
           # Options For PCP plots
 
@@ -218,10 +223,10 @@ app_ui <- function(request) {
 
 
       # Main UI ------------------------------------------------------
-      ## gg1d plot
+      ## ggstack plot
       bslib::card(
         min_height = "500px",
-        bslib::card_header("Visualisation (gg1d)"),
+        bslib::card_header("Visualisation (ggstack)"),
         bslib::card_body(
           shinycssloaders::withSpinner(
             ggiraph::girafeOutput("out_plot_widget", width = "95%")

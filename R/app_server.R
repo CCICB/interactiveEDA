@@ -88,7 +88,7 @@ app_server <- function(input, output, session,  df, colname, palette) {
         validate("Failed to import file")
       },
       warning = function(warn){
-        shinyWidgets::sendSweetAlert(session = session, title = "Failed to Generate GG1D Plot", text =  err2html(warn))
+        shinyWidgets::sendSweetAlert(session = session, title = "Failed to Generate Stacked Plot", text =  err2html(warn))
         validate("Failed to import file")
       })
 
@@ -98,10 +98,10 @@ app_server <- function(input, output, session,  df, colname, palette) {
   output$out_plot_widget <- ggiraph::renderGirafe({
     data <- req(dataset())
 
-    # Now call gg1d with user-specified parameters
+    # Now call ggstack with user-specified parameters
     tryCatch(
       expr = {
-        interactive_visualisation <- if(input$in_radio_plot_type == "gg1d"){
+        interactive_visualisation <- if(input$in_radio_plot_type == "ggstack"){
           ggEDA::ggstack(
             data = data,
             col_id = validate_column(input$in_sel_id, dataset()),
@@ -145,7 +145,9 @@ app_server <- function(input, output, session,  df, colname, palette) {
               colours_default_logical = c(
                 "TRUE" = input$in_default_logical_colour_true,
                 "FALSE" = input$in_default_logical_colour_false
-              )
+              ),
+              fontsize_barplot_y_numbers = input$in_num_pcp_fontsize_barplot_y_numbers,
+              fontsize_y_title =  input$in_num_pcp_fontsize_y_title
             )
           )
         }
